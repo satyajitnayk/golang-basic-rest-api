@@ -34,11 +34,13 @@ func deleteMovie(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	// get all variables from mux in params
 	params := mux.Vars(r)
-	// Iterate over the range of movies
+	// Iterate over the range of movies using index, item
 	for index, item := range movies {
-
+		// when id match
 		if item.ID == params["id"] {
-			// when id match
+			// movie at index will be replaced by all movies after index i.e. index+1
+			movies = append(movies[:index], movies[index+1:]...)
+			break
 		}
 	}
 }
