@@ -43,6 +43,8 @@ func deleteMovie(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 	}
+	// return remaining movies
+	json.NewEncoder(w).Encode(movies)
 }
 
 func getMovieById(w http.ResponseWriter, r *http.Request) {
